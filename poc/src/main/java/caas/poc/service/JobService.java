@@ -9,5 +9,8 @@ public class JobService {
     @Autowired
     private JobRepository jobRepository;
 
+    public void removeAll() {
+        jobRepository.deleteAll();
+    }
 
 }

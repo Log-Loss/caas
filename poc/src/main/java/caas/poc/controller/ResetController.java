@@ -1,29 +1,25 @@
-package caas.poc.config;
+package caas.poc.controller;
 
-import caas.poc.repository.WorkspaceRepository;
 import caas.poc.service.DatasetService;
 import caas.poc.service.ModelService;
 import caas.poc.service.UserService;
 import caas.poc.service.WorkspaceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-@Configuration
-public class DatabaseConfiguration {
+@RestController
+public class ResetController {
     @Autowired
     UserService userService;
 
@@ -36,7 +32,7 @@ public class DatabaseConfiguration {
     @Autowired
     ModelService modelService;
 
-    @EventListener(ApplicationReadyEvent.class)
+    @RequestMapping(value = "/reset", method = RequestMethod.POST)
     public void config() throws IOException {
 
         workspaceService.removeAll();
@@ -44,35 +40,36 @@ public class DatabaseConfiguration {
         userService.removeAll();
         modelService.removeAll();
 
-        userService.create("user@email.com", "password");
+        Integer userId = userService.create("user@email.com", "password").id;
         userService.create("user1@email.com", "password1");
         userService.create("user2@email.com", "password2");
 
-        workspaceService.create(1, "1workspace");
-        workspaceService.create(1, "1workspace1");
+        Integer workspaceId = workspaceService.create(userId, "1workspace").id;
+        workspaceService.create(userId, "1workspace1");
 
-        workspaceService.create(2, "2workspace");
-        workspaceService.create(2, "2workspace1");
+        workspaceService.create(userId + 1, "2workspace");
+        workspaceService.create(userId + 1, "2workspace1");
 
-        modelService.create(1, "1model");
-        modelService.create(1, "1model1");
-        modelService.create(1, "1model2");
-        modelService.create(2, "2model");
-        modelService.create(2, "2model1");
-        modelService.create(2, "2model2");
-        modelService.create(3, "3model");
-        modelService.create(3, "3model1");
-        modelService.create(3, "3model2");
+
+        modelService.create(workspaceId, "1model");
+        modelService.create(workspaceId, "1model1");
+        modelService.create(workspaceId, "1model2");
+        modelService.create(workspaceId + 1, "2model");
+        modelService.create(workspaceId + 1, "2model1");
+        modelService.create(workspaceId + 1, "2model2");
+        modelService.create(workspaceId + 2, "3model");
+        modelService.create(workspaceId + 2, "3model1");
+        modelService.create(workspaceId + 2, "3model2");
 
 
         Resource resource = new ClassPathResource("datasets/t10k-labels-idx1-ubyte");
         byte[] content = Files.readAllBytes(Paths.get(resource.getFile().getPath()));
-        datasetService.create(1, "1dataset", content, false);
-        datasetService.create(1, "1dataset1", content, false);
-        datasetService.create(1, "1dataset2", content, false);
-        datasetService.create(2, "2dataset", content, false);
-        datasetService.create(2, "2dataset1", content, false);
-        datasetService.create(2, "2dataset2", content, false);
+        datasetService.create(workspaceId, "1dataset", content, false);
+        datasetService.create(workspaceId, "1dataset1", content, false);
+        datasetService.create(workspaceId, "1dataset2", content, false);
+        datasetService.create(workspaceId + 1, "2dataset", content, false);
+        datasetService.create(workspaceId + 1, "2dataset1", content, false);
+        datasetService.create(workspaceId + 1, "2dataset2", content, false);
 
         datasetService.create(0, "dataset", content, true);
         datasetService.create(0, "dataset1", content, true);

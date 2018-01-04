@@ -18,18 +18,20 @@ public class CodeService {
     @Autowired
     private WorkspaceRepository workspaceRepository;
 
-    public Code create(Integer workspaceId, String name, String type, String content) {
+    public Code create(Integer workspaceId, String name) {
         Code code = new Code();
         code.workspaceId = workspaceId;
         code.name = name;
-        code.type = type;
-        code.content = content;
         codeRepository.saveAndFlush(code);
         return code;
     }
 
-    public Code get(Integer id) {
-        return codeRepository.getOne(id);
+    public Code findOne(Integer id) {
+        return codeRepository.findOne(id);
+    }
+
+    public void removeAll() {
+        codeRepository.deleteAll();
     }
 
     public List<Code> getList(Integer workspaceId) {

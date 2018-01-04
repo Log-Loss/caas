@@ -72,7 +72,9 @@ public class DatasetService {
     public void remove(Integer id) {
         datasetRepository.delete(id);
     }
-
+    public void removeAll() {
+        datasetRepository.deleteAll();
+    }
     public Boolean isPublic(Integer id) {
         return datasetRepository.findOne(id).isPublic;
     }

@@ -55,4 +55,8 @@ public class WorkspaceService {
     public Boolean existsUserIdAndName(Integer userId, String name) {
         return workspaceRepository.existsByUserIdAndName(userId, name);
     }
+
+    public void removeAll() {
+        workspaceRepository.deleteAll();
+    }
 }

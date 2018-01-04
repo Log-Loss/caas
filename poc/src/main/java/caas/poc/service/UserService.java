@@ -57,4 +57,8 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
 
+    public void removeAll() {
+        userRepository.deleteAll();
+    }
+
 }

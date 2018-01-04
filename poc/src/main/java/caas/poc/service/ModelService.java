@@ -102,4 +102,7 @@ public class ModelService {
     public void remove(Integer id) {
         modelRepository.delete(id);
     }
+    public void removeAll() {
+        modelRepository.deleteAll();
+    }
 }
