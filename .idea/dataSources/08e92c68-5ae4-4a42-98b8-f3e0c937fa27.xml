@@ -936,230 +936,197 @@
     <table id="237" parent="2" name="Workspace">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="238" parent="2" name="Workspace_datasets">
-      <Engine>InnoDB</Engine>
-    </table>
-    <column id="239" parent="231" name="id">
+    <column id="238" parent="231" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="239" parent="231" name="content">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="240" parent="231" name="name">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="241" parent="231" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="242" parent="232" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="243" parent="232" name="content">
-      <Position>2</Position>
-      <DataType>tinyblob|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="244" parent="232" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="245" parent="232" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="246" parent="233" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="247" parent="233" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="248" parent="234" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="249" parent="234" name="config">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="250" parent="234" name="name">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="251" parent="234" name="dataset_id">
+    <column id="241" parent="231" name="type">
       <Position>4</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="234" name="workspace_id">
+    <column id="242" parent="231" name="workspaceId">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="253" parent="234" name="FKrn2911cq9y86yva3acv1p9xlj">
-      <ColNames>dataset_id</ColNames>
-    </index>
-    <index id="254" parent="234" name="FKijinmv702ntw4pre19tovyvit">
-      <ColNames>workspace_id</ColNames>
-    </index>
-    <key id="255" parent="234" name="PRIMARY">
+    <key id="243" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="256" parent="234" name="FKrn2911cq9y86yva3acv1p9xlj">
-      <ColNames>dataset_id</ColNames>
-      <RefSchemaName>caas</RefSchemaName>
-      <RefTableName>Dataset</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="257" parent="234" name="FKijinmv702ntw4pre19tovyvit">
-      <ColNames>workspace_id</ColNames>
-      <RefSchemaName>caas</RefSchemaName>
-      <RefTableName>Workspace</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="258" parent="235" name="id">
+    <column id="244" parent="232" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="235" name="user_id">
+    <column id="245" parent="232" name="content">
       <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>longblob|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="260" parent="235" name="FKkbo3469s2s08msm1s9jy1b7m7">
-      <ColNames>user_id</ColNames>
-    </index>
-    <key id="261" parent="235" name="PRIMARY">
+    <column id="246" parent="232" name="isPublic">
+      <Position>3</Position>
+      <DataType>bit(1)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="247" parent="232" name="name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="248" parent="232" name="workspaceId">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="249" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="262" parent="235" name="FKkbo3469s2s08msm1s9jy1b7m7">
-      <ColNames>user_id</ColNames>
-      <RefSchemaName>caas</RefSchemaName>
-      <RefTableName>User</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="263" parent="236" name="id">
+    <column id="250" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="236" name="name">
+    <column id="251" parent="233" name="config">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="236" name="password">
+    <column id="252" parent="233" name="datasetContent">
+      <Position>3</Position>
+      <DataType>longblob|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="253" parent="233" name="workspaceId">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="254" parent="233" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="255" parent="234" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="256" parent="234" name="config">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="257" parent="234" name="datasetId">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="258" parent="234" name="name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="259" parent="234" name="workspaceId">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="260" parent="234" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="261" parent="235" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="262" parent="235" name="userId">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="263" parent="235" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="264" parent="236" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="265" parent="236" name="email">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="266" parent="236" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="236" name="UK_syftr7gx86fwf7ox7bgvnnta7">
-      <ColNames>name</ColNames>
+    <index id="267" parent="236" name="UK_e6gkqunxajvyxl5uctpl2vl2p">
+      <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="267" parent="236" name="PRIMARY">
+    <key id="268" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="268" parent="236" name="UK_syftr7gx86fwf7ox7bgvnnta7">
-      <ColNames>name</ColNames>
-      <UnderlyingIndexName>UK_syftr7gx86fwf7ox7bgvnnta7</UnderlyingIndexName>
+    <key id="269" parent="236" name="UK_e6gkqunxajvyxl5uctpl2vl2p">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>UK_e6gkqunxajvyxl5uctpl2vl2p</UnderlyingIndexName>
     </key>
-    <column id="269" parent="237" name="id">
+    <column id="270" parent="237" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="237" name="name">
+    <column id="271" parent="237" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="237" name="user_id">
+    <column id="272" parent="237" name="userId">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="272" parent="237" name="FK68bht57u2dupon18mfwkslkml">
-      <ColNames>user_id</ColNames>
-    </index>
     <key id="273" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="274" parent="237" name="FK68bht57u2dupon18mfwkslkml">
-      <ColNames>user_id</ColNames>
-      <RefSchemaName>caas</RefSchemaName>
-      <RefTableName>User</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="275" parent="238" name="workspaces">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="276" parent="238" name="datasets">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="277" parent="238" name="FK5sp8ppbna70lu3pnqh6w2i9jf">
-      <ColNames>datasets</ColNames>
-    </index>
-    <key id="278" parent="238" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>workspaces
-datasets</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="279" parent="238" name="FKqcrljhyrgmniu45or0d2d72iw">
-      <ColNames>workspaces</ColNames>
-      <RefSchemaName>caas</RefSchemaName>
-      <RefTableName>Workspace</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="280" parent="238" name="FK5sp8ppbna70lu3pnqh6w2i9jf">
-      <ColNames>datasets</ColNames>
-      <RefSchemaName>caas</RefSchemaName>
-      <RefTableName>Dataset</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
   </database-model>
 </dataSource>

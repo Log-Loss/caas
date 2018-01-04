@@ -14,6 +14,5 @@ public class Code {
 
     public String content;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    public Workspace workspace;
+    public Integer workspaceId;
 }

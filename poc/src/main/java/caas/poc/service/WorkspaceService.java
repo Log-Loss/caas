@@ -7,6 +7,9 @@ import caas.poc.repository.WorkspaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Set;
+
 @Service
 public class WorkspaceService {
     @Autowired
@@ -16,7 +19,7 @@ public class WorkspaceService {
 
     public Workspace create(Integer userId, String name) {
         Workspace workspace = new Workspace();
-        workspace.user = userRepository.findOne(userId);
+        workspace.userId = userId;
         workspace.name = name;
         workspaceRepository.saveAndFlush(workspace);
         return workspace;
@@ -33,11 +36,23 @@ public class WorkspaceService {
         workspaceRepository.delete(id);
     }
 
-    public Workspace find(Integer id) {
+    public Workspace findOne(Integer id) {
         return workspaceRepository.findOne(id);
+    }
+
+    public List<Workspace> findAll() {
+        return workspaceRepository.findAll();
+    }
+
+    public List<Workspace> findByUserId(Integer userId) {
+        return workspaceRepository.findAllByUserId(userId);
     }
 
     public Boolean exists(Integer id) {
         return workspaceRepository.exists(id);
+    }
+
+    public Boolean existsUserIdAndName(Integer userId, String name) {
+        return workspaceRepository.existsByUserIdAndName(userId, name);
     }
 }

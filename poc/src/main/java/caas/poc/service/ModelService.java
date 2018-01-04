@@ -10,6 +10,8 @@ import caas.poc.repository.WorkspaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ModelService {
     @Autowired
@@ -21,11 +23,25 @@ public class ModelService {
     @Autowired
     private WorkspaceRepository workspaceRepository;
 
-    public Model create(Integer workspaceId, String name, String config) {
+    public Model create(Integer workspaceId, String name) {
         Model model = new Model();
-        model.workspace = workspaceRepository.findOne(workspaceId);
+        model.workspaceId = workspaceId;
         model.name = name;
-        model.config = config;
+        modelRepository.saveAndFlush(model);
+        return model;
+    }
+
+    public Model update(Integer id, String name, String config, Integer datasetId) {
+        Model model = modelRepository.findOne(id);
+        if (name != null) {
+            model.name = name;
+        }
+        if (config != null) {
+            model.config = config;
+        }
+        if (datasetId != null) {
+            model.datasetId = datasetId;
+        }
         modelRepository.saveAndFlush(model);
         return model;
     }
@@ -46,16 +62,41 @@ public class ModelService {
 
     public Model setDataset(Integer id, Integer datasetId) {
         Model model = modelRepository.findOne(id);
-        model.dataset = datasetRepository.findOne(datasetId);
+        model.datasetId = datasetId;
         modelRepository.saveAndFlush(model);
         return model;
     }
 
     public Model removeDataset(Integer id) {
         Model model = modelRepository.findOne(id);
-        model.dataset = null;
+        model.datasetId = null;
         modelRepository.saveAndFlush(model);
         return model;
+    }
+
+    public Model findOne(Integer id) {
+        return modelRepository.findOne(id);
+    }
+
+    public List<Model> findAll() {
+        return modelRepository.findAll();
+    }
+
+    public List<Model> findAllByWorkspaceId(Integer workspaceId) {
+        return modelRepository.findAllByWorkspaceId(workspaceId);
+    }
+
+    public Boolean exist(Integer id) {
+        return modelRepository.exists(id);
+    }
+
+    public Boolean existsByWorkspaceIdAndName(Integer workspaceId, String name) {
+        return modelRepository.existsByWorkspaceIdAndName(workspaceId, name);
+    }
+
+    public Boolean existsDataset(Integer id, Integer datasetId) {
+        return datasetRepository.findOne(datasetId).isPublic ||
+                modelRepository.findOne(id).workspaceId.equals(datasetRepository.findOne(datasetId).workspaceId);
     }
 
     public void remove(Integer id) {

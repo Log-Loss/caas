@@ -11,13 +11,7 @@ public class User {
     public Integer id;
 
     @Column(unique = true)
-    public String name;
+    public String email;
 
     public String password;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    public Set<Workspace> workspaces = new HashSet<Workspace>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    public Set<Session> sessions = new HashSet<Session>();
 }

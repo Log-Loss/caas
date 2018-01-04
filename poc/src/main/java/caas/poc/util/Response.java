@@ -5,12 +5,21 @@ import java.util.List;
 public class Response {
     public Response(int code) {
         this.code = code;
-        if (code == 501) {
-            message = "Missing Param in Body";
+
+        if (code == 401) {
+            message = "Login Fail";
         }
 
         if (code == 404) {
             message = "Resource Not Found";
+        }
+
+        if (code == 406) {
+            message = "Resource Existed";
+        }
+
+        if (code == 412) {
+            message = "Missing Param in Body";
         }
     }
 

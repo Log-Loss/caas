@@ -14,12 +14,8 @@ public class Model {
 
     public String config;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    public Workspace workspace;
+    public Integer workspaceId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    public Dataset dataset;
+    public Integer datasetId;
 
-    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
-    public Set<Job> jobs = new HashSet<Job>();
 }

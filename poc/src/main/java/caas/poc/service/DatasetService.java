@@ -9,6 +9,9 @@ import caas.poc.repository.WorkspaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Set;
+
 @Service
 public class DatasetService {
     @Autowired
@@ -17,12 +20,12 @@ public class DatasetService {
     @Autowired
     private WorkspaceRepository workspaceRepository;
 
-    public Dataset create(Integer workspaceId, String name, Byte[] content, Boolean isPublic) {
+    public Dataset create(Integer workspaceId, String name, byte[] content, Boolean isPublic) {
         Dataset dataset = new Dataset();
         dataset.name = name;
         dataset.content = content;
         dataset.isPublic = isPublic;
-        dataset.workspace = workspaceRepository.findOne(workspaceId);
+        dataset.workspaceId = workspaceId;
         datasetRepository.saveAndFlush(dataset);
         return dataset;
     }
@@ -34,22 +37,44 @@ public class DatasetService {
         return dataset;
     }
 
-    public Dataset setIsPublic(Integer id, Boolean isPublic) {
-        Dataset dataset = datasetRepository.findOne(id);
-        dataset.isPublic = isPublic;
-        datasetRepository.saveAndFlush(dataset);
-        return dataset;
+    public Dataset findOne(Integer id) {
+        return datasetRepository.findOne(id);
     }
 
-    public Dataset setContent(Integer id, Byte[] content) {
-        Dataset dataset = datasetRepository.findOne(id);
-        dataset.content = content;
-        datasetRepository.saveAndFlush(dataset);
-        return dataset;
+    public List<Dataset> findAll() {
+        return datasetRepository.findAll();
+    }
+
+    public List<Dataset> findAllByIsPublic(Boolean isPublic) {
+        return datasetRepository.findAllByIsPublic(isPublic);
+    }
+
+    public List<Dataset> findAllByIsWorkspaceId(Integer workspaceId) {
+        return datasetRepository.findAllByWorkspaceId(workspaceId);
+    }
+
+    public Dataset findByWorkspaceIdAndName(Integer workspaceId, String name) {
+        return datasetRepository.findByWorkspaceIdAndName(workspaceId, name);
+    }
+
+    public Boolean exist(Integer id) {
+        return datasetRepository.exists(id);
+    }
+
+    public Boolean existsByWorkspaceIdAndName(Integer workspaceId, String name) {
+        return datasetRepository.existsByWorkspaceIdAndName(workspaceId, name);
+    }
+
+    public Boolean existsByWorkspaceIdAndAndIsPublic(String name, Boolean isPublic) {
+        return datasetRepository.existsByNameAndIsPublic(name, isPublic);
     }
 
     public void remove(Integer id) {
         datasetRepository.delete(id);
+    }
+
+    public Boolean isPublic(Integer id) {
+        return datasetRepository.findOne(id).isPublic;
     }
 
 }

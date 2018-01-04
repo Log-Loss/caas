@@ -10,8 +10,8 @@ public class Job {
 
     public String config;
 
-    public Byte[] datasetContent;
+    @Column(length = 100000000)
+    public byte[] datasetContent;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    public Workspace workspace;
+    public Integer workspaceId;
 }
