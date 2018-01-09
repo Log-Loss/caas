@@ -5,6 +5,9 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/poc/pom.xml" />
+        <option value="$PROJECT_DIR$/dataset/pom.xml" />
+        <option value="$PROJECT_DIR$/config/pom.xml" />
+        <option value="$PROJECT_DIR$/train/pom.xml" />
       </list>
     </option>
   </component>

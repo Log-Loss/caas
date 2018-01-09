@@ -1,6 +1,7 @@
 package caas.poc.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 public class Job {
@@ -8,10 +9,15 @@ public class Job {
     @GeneratedValue
     public Integer id;
 
+    public Integer modelId;
+
+    public String datasetId;
+
     public String config;
 
-    @Column(length = 100000000)
-    public byte[] datasetContent;
+    public Date createTime;
+
+    public Date finishTime;
 
     public Integer workspaceId;
 }

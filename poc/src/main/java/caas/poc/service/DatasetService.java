@@ -9,6 +9,7 @@ import caas.poc.repository.WorkspaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.List;
 import java.util.Set;
 
@@ -23,7 +24,6 @@ public class DatasetService {
     public Dataset create(Integer workspaceId, String name, byte[] content, Boolean isPublic) {
         Dataset dataset = new Dataset();
         dataset.name = name;
-        dataset.content = content;
         dataset.isPublic = isPublic;
         dataset.workspaceId = workspaceId;
         datasetRepository.saveAndFlush(dataset);
@@ -72,11 +72,17 @@ public class DatasetService {
     public void remove(Integer id) {
         datasetRepository.delete(id);
     }
+
     public void removeAll() {
         datasetRepository.deleteAll();
     }
+
     public Boolean isPublic(Integer id) {
         return datasetRepository.findOne(id).isPublic;
+    }
+
+    public File getFile() {
+        return null;
     }
 
 }

@@ -120,8 +120,9 @@ public class DatasetController {
         String filename = URLEncoder.encode(dataset.name, "UTF-8");
         headers.add("Content-Disposition", "attachment;filename=\"" + filename + "\"");
 
-        Resource resource = new InputStreamResource(new ByteArrayInputStream(dataset.content));
+//        Resource resource = new InputStreamResource(new ByteArrayInputStream(dataset.content));
 
-        return ResponseEntity.ok().headers(headers).contentType(MediaType.MULTIPART_FORM_DATA).body(resource);
+//        return ResponseEntity.ok().headers(headers).contentType(MediaType.MULTIPART_FORM_DATA).body(resource);
+        return null;
     }
 }

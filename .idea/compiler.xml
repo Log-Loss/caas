@@ -8,17 +8,23 @@
         <outputRelativeToContentRoot value="true" />
         <module name="caas" />
         <module name="caas (1)" />
+        <module name="config" />
+        <module name="dataset" />
         <module name="demo" />
         <module name="poc" />
         <module name="poc (1)" />
+        <module name="train" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="caas" target="1.8" />
       <module name="caas (1)" target="1.8" />
+      <module name="config" target="1.8" />
+      <module name="dataset" target="1.8" />
       <module name="demo" target="1.8" />
       <module name="poc" target="1.8" />
       <module name="poc (1)" target="1.8" />
+      <module name="train" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

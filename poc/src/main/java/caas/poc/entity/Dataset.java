@@ -15,9 +15,7 @@ public class Dataset {
 
     public String name;
 
-    @Column(length = 100000000)
-    @JsonIgnore
-    public byte[] content;
+    public String hash;
 
     public Boolean isPublic = false;
 
