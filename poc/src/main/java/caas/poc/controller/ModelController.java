@@ -70,11 +70,12 @@ public class ModelController {
         String name = body.get("name");
         String config = body.get("config");
         String datasetName = body.get("datasetName");
+        String type = body.get("type");
         if (!modelService.exists(id)) {
             return new Response(404);
         }
 
-        Object result = modelService.update(id, name, config, datasetName);
+        Object result = modelService.update(id, name, config, datasetName, type);
         return new Response(200, "OK", result);
     }
 

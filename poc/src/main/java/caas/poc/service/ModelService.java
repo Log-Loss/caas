@@ -31,7 +31,7 @@ public class ModelService {
         return model;
     }
 
-    public Model update(Integer id, String name, String config, String datasetName) {
+    public Model update(Integer id, String name, String config, String datasetName,String type) {
         Model model = modelRepository.findOne(id);
         if (name != null) {
             model.name = name;
@@ -41,6 +41,9 @@ public class ModelService {
         }
         if (datasetName != null) {
             model.datasetName = datasetName;
+        }
+        if (type != null) {
+            model.type = type;
         }
         modelRepository.saveAndFlush(model);
         return model;
