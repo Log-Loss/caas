@@ -51,15 +51,15 @@ public class ResetController {
         workspaceService.create(userId + 1, "2workspace1");
 
 
-        modelService.create(workspaceId, "1model", "dense");
-        modelService.create(workspaceId, "1model1", "dense");
-        modelService.create(workspaceId, "1model2", "dense");
-        modelService.create(workspaceId + 1, "2model", "dense");
-        modelService.create(workspaceId + 1, "2model1", "dense");
-        modelService.create(workspaceId + 1, "2model2", "dense");
-        modelService.create(workspaceId + 2, "3model", "dense");
-        modelService.create(workspaceId + 2, "3model1", "dense");
-        modelService.create(workspaceId + 2, "3model2", "dense");
+        modelService.create(workspaceId, "1model");
+        modelService.create(workspaceId, "1model1");
+        modelService.create(workspaceId, "1model2");
+        modelService.create(workspaceId + 1, "2model");
+        modelService.create(workspaceId + 1, "2model1");
+        modelService.create(workspaceId + 1, "2model2");
+        modelService.create(workspaceId + 2, "3model");
+        modelService.create(workspaceId + 2, "3model1");
+        modelService.create(workspaceId + 2, "3model2");
 
 
         Resource resource = new ClassPathResource("datasets/t10k-labels-idx1-ubyte");

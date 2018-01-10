@@ -23,16 +23,15 @@ public class ModelService {
     @Autowired
     private WorkspaceRepository workspaceRepository;
 
-    public Model create(Integer workspaceId, String name, String type) {
+    public Model create(Integer workspaceId, String name) {
         Model model = new Model();
         model.workspaceId = workspaceId;
         model.name = name;
-        model.type = type;
         modelRepository.saveAndFlush(model);
         return model;
     }
 
-    public Model update(Integer id, String name, String config, String datasetName, String type) {
+    public Model update(Integer id, String name, String config, String datasetName) {
         Model model = modelRepository.findOne(id);
         if (name != null) {
             model.name = name;
@@ -42,9 +41,6 @@ public class ModelService {
         }
         if (datasetName != null) {
             model.datasetName = datasetName;
-        }
-        if (type != null) {
-            model.type = type;
         }
         modelRepository.saveAndFlush(model);
         return model;

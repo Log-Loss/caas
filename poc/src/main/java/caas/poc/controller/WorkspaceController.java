@@ -26,7 +26,7 @@ public class WorkspaceController {
             if (userId == null) {
                 result = workspaceService.findAll();
             } else {
-                if (!workspaceService.exists(userId)) {
+                if (!userService.exists(userId)) {
                     return new Response(404);
                 }
                 result = workspaceService.findByUserId(userId);

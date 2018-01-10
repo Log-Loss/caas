@@ -47,18 +47,17 @@ public class ModelController {
 
     @RequestMapping(value = "/model", method = RequestMethod.POST)
     public Object post(@RequestBody Map<String, String> body) {
-        if (!BodyCheck.check(body, "workspaceId", "name", "type")) {
+        if (!BodyCheck.check(body, "workspaceId", "name")) {
             return new Response(412);
         }
         Integer workspaceId = Integer.valueOf(body.get("workspaceId"));
         String name = body.get("name");
-        String type = body.get("type");
 
         if (modelService.existsByWorkspaceIdAndName(workspaceId, name)) {
             return new Response(406);
         }
 
-        Object result = modelService.create(workspaceId, name, type);
+        Object result = modelService.create(workspaceId, name);
         return new Response(200, "OK", result);
     }
 
@@ -70,13 +69,12 @@ public class ModelController {
         Integer id = Integer.parseInt(body.get("id"));
         String name = body.get("name");
         String config = body.get("config");
-        String type = body.get("type");
         String datasetName = body.get("datasetName");
         if (!modelService.exists(id)) {
             return new Response(404);
         }
 
-        Object result = modelService.update(id, name, config, datasetName, type);
+        Object result = modelService.update(id, name, config, datasetName);
         return new Response(200, "OK", result);
     }
 
