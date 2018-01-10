@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface JobRepository extends JpaRepository<Job, Integer> {
 
-    List<Job> findAllByWorkspaceId(Integer workspaceId);
+    List<Job> findAllByModelId(Integer modelId);
 }

@@ -27,6 +27,4 @@ public class Job {
     public Date startTime;
 
     public Date finishTime;
-
-    public Integer workspaceId;
 }

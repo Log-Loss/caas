@@ -24,10 +24,9 @@ public class JobService {
     @Autowired
     private JobRepository jobRepository;
 
-    public Job create(Integer modelId, Integer workspaceId, Integer datasetId, String config, String type, String datasetName, Integer epochs, Integer batchSize) {
+    public Job create(Integer modelId, Integer datasetId, String config, String type, String datasetName, Integer epochs, Integer batchSize) {
         Job job = new Job();
         job.modelId = modelId;
-        job.workspaceId = workspaceId;
         job.config = getNetConfig(config, type);
         job.datasetId = datasetId;
         job.datasetName = datasetName;
@@ -85,10 +84,6 @@ public class JobService {
         return jobRepository.exists(id);
     }
 
-    public List<Job> findAllByWorkspaceId(Integer workspaceId) {
-        return jobRepository.findAllByWorkspaceId(workspaceId);
-    }
-
     public Object findOne(Integer id) {
         return jobRepository.findOne(id);
     }
@@ -118,5 +113,9 @@ public class JobService {
         job.batchSize = batchSize;
         jobRepository.saveAndFlush(job);
         return job;
+    }
+
+    public Object findAllByModelId(Integer modelId) {
+        return jobRepository.findAllByModelId(modelId);
     }
 }

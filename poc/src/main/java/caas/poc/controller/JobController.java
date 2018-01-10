@@ -29,16 +29,16 @@ public class JobController {
 
     @RequestMapping(value = "/job", method = RequestMethod.GET)
     public Object get(@RequestParam(required = false) Integer id,
-                      @RequestParam(required = false) Integer workspaceId) {
+                      @RequestParam(required = false) Integer modelId) {
         Object result;
         if (id == null) {
-            if (workspaceId == null) {
+            if (modelId == null) {
                 result = jobService.findAll();
             } else {
-                if (!workspaceService.exists(workspaceId)) {
+                if (!modelService.exists(modelId)) {
                     return new Response(404);
                 }
-                result = jobService.findAllByWorkspaceId(workspaceId);
+                result = jobService.findAllByModelId(modelId);
             }
         } else {
             if (!jobService.exists(id)) {
@@ -61,7 +61,7 @@ public class JobController {
 
         Model model = modelService.findOne(modelId);
 
-        Object result = jobService.create(model.id, model.workspaceId, model.datasetId, model.config, model.type, model.datasetName, epochs, batchSize);
+        Object result = jobService.create(model.id, model.datasetId, model.config, model.type, model.datasetName, epochs, batchSize);
 
         return new Response(200, "OK", result);
     }
