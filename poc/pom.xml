@@ -107,7 +107,7 @@
 			<version>${dl4j.version}</version>
 		</dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>

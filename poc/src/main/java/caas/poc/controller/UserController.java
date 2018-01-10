@@ -62,12 +62,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.DELETE)
-    public Object delete(@RequestBody Map<String, String> body) {
-        if (!BodyCheck.check(body, "id")) {
-            return new Response(412);
-        }
-        Integer id = Integer.parseInt(body.get("id"));
-
+    public Object delete(Integer id) {
         if (!userService.exists(id)) {
             return new Response(404);
         }

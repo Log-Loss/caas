@@ -1,7 +1,7 @@
 package caas.poc.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 public class Job {
@@ -11,11 +11,20 @@ public class Job {
 
     public Integer modelId;
 
-    public String datasetId;
+    public Integer datasetId;
 
+    public String datasetName;
+
+    public Integer epochs;
+
+    public Integer batchSize;
+
+    @Column(length = 10000)
     public String config;
 
     public Date createTime;
+
+    public Date startTime;
 
     public Date finishTime;
 

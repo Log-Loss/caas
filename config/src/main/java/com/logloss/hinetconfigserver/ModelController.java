@@ -18,7 +18,7 @@ public class ModelController {
 
     /* dense neural network */
     @RequestMapping(value = "/dense", method = RequestMethod.POST)
-    public ReturnConfig buildDenseModel(@RequestBody DenseConfig config) {
+    public String buildDenseModel(@RequestBody DenseConfig config) {
         ModelConfig conf = modelService.buildDenseModel(config);
 //        System.out.println(conf);
 //        //for test
@@ -27,12 +27,12 @@ public class ModelController {
 //        model.fit(iterator);
 //        Evaluation eval = model.evaluate(iterator);
 //        System.out.println(eval);
-        return new ReturnConfig(conf.getModelId(), conf.getTimeStamp());
+        return conf.getConfiguration();
     }
 
     /* convolutional neural network */
     @RequestMapping(value = "/conv", method = RequestMethod.POST)
-    public ReturnConfig buildConvModel(@RequestBody ConvConfig config) throws Exception {
+    public String buildConvModel(@RequestBody ConvConfig config) throws Exception {
         ModelConfig conf = modelService.buildConvModel(config);
 //        System.out.println(conf);
 //        //for test
@@ -41,15 +41,15 @@ public class ModelController {
 //        model.fit(iterator);
 //        Evaluation eval = model.evaluate(iterator);
 //        System.out.println(eval);
-        return new ReturnConfig(conf.getModelId(), conf.getTimeStamp());
+        return conf.getConfiguration();
     }
 
     /* recurrent neural network */
     @RequestMapping(value = "/rnn", method = RequestMethod.POST)
-    public ReturnConfig buildRnnModel(@RequestBody RnnConfig config) throws Exception {
+    public String buildRnnModel(@RequestBody RnnConfig config) throws Exception {
         ModelConfig conf = modelService.buildRnnModel(config);
 //        System.out.println(conf);
-        return new ReturnConfig(conf.getModelId(), conf.getTimeStamp());
+        return conf.getConfiguration();
     }
 
     @RequestMapping("/model")

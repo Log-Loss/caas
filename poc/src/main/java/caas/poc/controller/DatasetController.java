@@ -89,12 +89,7 @@ public class DatasetController {
     }
 
     @RequestMapping(value = "/dataset", method = RequestMethod.DELETE)
-    public Object delete(@RequestBody Map<String, String> body) {
-        if (!BodyCheck.check(body, "id")) {
-            return new Response(412);
-        }
-        Integer id = Integer.parseInt(body.get("id"));
-
+    public Object delete(Integer id) {
         if (!datasetService.exist(id)) {
             return new Response(404);
         }

@@ -12,10 +12,15 @@ public class Model {
 
     public String name;
 
+    public String type;
+
+    @Column(length = 10000)
     public String config;
 
     public Integer workspaceId;
 
     public Integer datasetId;
+
+    public String datasetName;
 
 }

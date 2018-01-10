@@ -54,16 +54,17 @@ public class DatabaseConfiguration {
         workspaceService.create(2, "2workspace");
         workspaceService.create(2, "2workspace1");
 
-        modelService.create(1, "1model");
-        modelService.create(1, "1model1");
-        modelService.create(1, "1model2");
-        modelService.create(2, "2model");
-        modelService.create(2, "2model1");
-        modelService.create(2, "2model2");
-        modelService.create(3, "3model");
-        modelService.create(3, "3model1");
-        modelService.create(3, "3model2");
+        modelService.create(1, "1model", "dense");
+        modelService.create(1, "1model1", "dense");
+        modelService.create(1, "1model2", "dense");
+        modelService.create(2, "2model", "dense");
+        modelService.create(2, "2model1", "dense");
+        modelService.create(2, "2model2", "dense");
+        modelService.create(3, "3model", "dense");
+        modelService.create(3, "3model1", "dense");
+        modelService.create(3, "3model2", "dense");
 
+        modelService.update(1, "1model", "{\"userId\":\"licor\",\"dataset\":\"iris\",\"globalVariable\":{\"iteration\":\"1\",\"lr\":\"0.01\",\"l2\":\"0.0002\"},\"layers\":[{\"outputDim\":\"1000\",\"activation\":\"relu\",\"weightInit\":\"xavier\",\"type\":\"dense\"},{\"outputDim\":\"500\",\"activation\":\"relu\",\"weightInit\":\"xavier\",\"type\":\"dense\"},{\"outputNum\":\"3\",\"activation\":\"softmax\",\"lossFunction\":\"neg\",\"type\":\"output\"}]}", "iris", "dense");
 
         Resource resource = new ClassPathResource("datasets/t10k-labels-idx1-ubyte");
         byte[] content = Files.readAllBytes(Paths.get(resource.getFile().getPath()));

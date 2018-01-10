@@ -36,7 +36,7 @@ public class ModelController {
                 result = modelService.findAllByWorkspaceId(workspaceId);
             }
         } else {
-            if (!modelService.exist(id)) {
+            if (!modelService.exists(id)) {
                 return new Response(404);
             }
             result = modelService.findOne(id);
@@ -47,17 +47,18 @@ public class ModelController {
 
     @RequestMapping(value = "/model", method = RequestMethod.POST)
     public Object post(@RequestBody Map<String, String> body) {
-        if (!BodyCheck.check(body, "workspaceId", "name")) {
+        if (!BodyCheck.check(body, "workspaceId", "name", "type")) {
             return new Response(412);
         }
         Integer workspaceId = Integer.valueOf(body.get("workspaceId"));
         String name = body.get("name");
+        String type = body.get("type");
 
         if (modelService.existsByWorkspaceIdAndName(workspaceId, name)) {
             return new Response(406);
         }
 
-        Object result = modelService.create(workspaceId, name);
+        Object result = modelService.create(workspaceId, name, type);
         return new Response(200, "OK", result);
     }
 
@@ -69,32 +70,19 @@ public class ModelController {
         Integer id = Integer.parseInt(body.get("id"));
         String name = body.get("name");
         String config = body.get("config");
-        Integer datasetId;
-        if (body.containsKey("datasetId")) {
-            datasetId = Integer.valueOf(body.get("datasetId"));
-            if (!datasetService.exist(datasetId)) {
-                return new Response(404);
-            }
-        } else {
-            datasetId = null;
-        }
-
-        if (!modelService.exist(id)) {
+        String type = body.get("type");
+        String datasetName = body.get("datasetName");
+        if (!modelService.exists(id)) {
             return new Response(404);
         }
 
-        Object result = modelService.update(id, name, config, datasetId);
+        Object result = modelService.update(id, name, config, datasetName, type);
         return new Response(200, "OK", result);
     }
 
     @RequestMapping(value = "/model", method = RequestMethod.DELETE)
-    public Object delete(@RequestBody Map<String, String> body) {
-        if (!BodyCheck.check(body, "id")) {
-            return new Response(412);
-        }
-        Integer id = Integer.parseInt(body.get("id"));
-
-        if (!modelService.exist(id)) {
+    public Object delete(Integer id) {
+        if (!modelService.exists(id)) {
             return new Response(404);
         }
         modelService.remove(id);
