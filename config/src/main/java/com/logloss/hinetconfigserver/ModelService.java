@@ -20,26 +20,20 @@ public class ModelService {
 
     public ModelConfig buildDenseModel(DenseConfig config) {
         MultiLayerConfiguration configuration = new DenseModel(config).getConfig();
-        ModelConfig modelConfig = new ModelConfig(config.userId, configuration.toJson());
-        modelRepository.insert(modelConfig);
 
-        return modelConfig;
+        return new ModelConfig(config.userId, configuration.toJson());
     }
 
     public ModelConfig buildConvModel(ConvConfig config) {
         MultiLayerConfiguration configuration = new ConvModel(config).getConfig();
-        ModelConfig modelConfig = new ModelConfig(config.userId, configuration.toJson());
-        modelRepository.insert(modelConfig);
 
-        return modelConfig;
+        return new ModelConfig(config.userId, configuration.toJson());
     }
 
     public ModelConfig buildRnnModel(RnnConfig config) {
         MultiLayerConfiguration configuration = new RnnModel(config).getConfig();
-        ModelConfig modelConfig = new ModelConfig(config.userId, configuration.toJson());
-        modelRepository.insert(modelConfig);
 
-        return modelConfig;
+        return new ModelConfig(config.userId, configuration.toJson());
     }
 
     public ModelConfig getModelById(String id) {

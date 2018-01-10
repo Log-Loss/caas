@@ -65,7 +65,7 @@ public class JobService {
 
         model.predict(testIter.next().getFeatureMatrix());
         System.out.println("**************** finished ********************");
-        
+
         return job;
     }
 
