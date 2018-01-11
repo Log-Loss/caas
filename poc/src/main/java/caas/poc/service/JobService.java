@@ -59,11 +59,15 @@ public class JobService {
             System.out.println("Evaluate model....");
             Evaluation eval = model.evaluate(testIter);
             System.out.println(eval.stats());
+            job.accuracy = eval.accuracy();
             testIter.reset();
         }
 
         model.predict(testIter.next().getFeatureMatrix());
         System.out.println("**************** finished ********************");
+
+        job.finishTime = new Date();
+        jobRepository.saveAndFlush(job);
 
         return job;
     }
